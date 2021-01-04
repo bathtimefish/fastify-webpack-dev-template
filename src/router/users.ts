@@ -5,9 +5,27 @@ import fastifyPlugin from 'fastify-plugin';
 const name = 'users';
 
 const users: IServer.user[] = [
-  { id: 1, name: 'Elvis Carlson', address: '1508 Allison Avenue', birthday: '09/04/95', sex: 'man', },
-  { id: 2, name: 'Primrose Delarosa', address: '1465 Edwards Street', birthday: '08/12/01', sex: 'woman', },
-  { id: 3, name: 'Elise Lindsay', address: '1682 Peaceful Lane', birthday: '02/06/85', sex: 'woman', },
+  {
+    id: 1,
+    name: 'Elvis Carlson',
+    address: '1508 Allison Avenue',
+    birthday: '09/04/95',
+    sex: 'man',
+  },
+  {
+    id: 2,
+    name: 'Primrose Delarosa',
+    address: '1465 Edwards Street',
+    birthday: '08/12/01',
+    sex: 'woman',
+  },
+  {
+    id: 3,
+    name: 'Elise Lindsay',
+    address: '1682 Peaceful Lane',
+    birthday: '02/06/85',
+    sex: 'woman',
+  },
 ];
 
 const router =  function (server: FastifyInstance, _: any, next: any) {
@@ -52,7 +70,7 @@ const router =  function (server: FastifyInstance, _: any, next: any) {
         name: { type: 'string' },
         address: { type: 'string' },
         birthday: { type: 'string' },
-        sex: { type: 'string', enum: ['man', 'woman']},
+        sex: { type: 'string', enum: ['man', 'woman'] },
       },
     },
   };
@@ -64,8 +82,8 @@ const router =  function (server: FastifyInstance, _: any, next: any) {
         name: body.name,
         address: body.address,
         birthday: body.birthday,
-        sex: body.sex, 
-      }
+        sex: body.sex,
+      };
       users.push(user);
       rep.send(user);
     } catch (e) {
