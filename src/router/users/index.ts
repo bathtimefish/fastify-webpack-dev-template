@@ -4,7 +4,7 @@ import { getAllHandler } from './getAll';
 import { getOneSchema, getOneHandler } from './getOne';
 import { postSchema, postHandler } from './post';
 import { patchSchema, patchHandler } from './patch';
-import { deleteHandler } from './delete';
+import { deleteSchema, deleteHandler } from './delete';
 
 const name = 'users';
 
@@ -30,6 +30,7 @@ const router =  function (server: FastifyInstance, _: any, next: any) {
   });
 
   server.delete(`/${name}/:userId`,  {
+    schema: deleteSchema,
     handler: deleteHandler,
   });
 
