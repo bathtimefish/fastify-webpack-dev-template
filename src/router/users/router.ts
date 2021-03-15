@@ -10,26 +10,26 @@ const name = 'users';
 
 const router =  function (server: FastifyInstance, _: any, next: any) {
 
-  server.get('/users',  {
+  server.get(`/${name}`,  {
     handler: getAllHandler,
   });
 
-  server.get('/users/:userId', {
+  server.get(`/${name}/:userId`, {
     schema: getOneSchema,
     handler: getOneHandler,
   });
 
-  server.post('/users',  {
+  server.post(`/${name}`,  {
     schema: postSchema,
     handler: postHandler,
   });
 
-  server.patch('/users/:userId',  {
+  server.patch(`/${name}/:userId`,  {
     schema: patchSchema,
     handler: patchHandler,
   });
 
-  server.delete('/users/:userId',  {
+  server.delete(`/${name}/:userId`,  {
     handler: deleteHandler,
   });
 
