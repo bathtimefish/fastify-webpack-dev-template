@@ -1,7 +1,7 @@
 declare namespace IServer {
 
   interface user {
-    id?: number,
+    id: number,
     name: string,
     address: string,
     birthday: string,
