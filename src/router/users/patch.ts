@@ -5,6 +5,12 @@ import dummyResponse from './dummyResponse';
 const users: IServer.user[] = dummyResponse as any;
 
 export const patchSchema: FastifySchema = {
+  params: {
+    type: 'object',
+    properties: {
+      userId: { type: 'integer' },
+    },
+  },
   body: {
     type: 'object',
     required: ['name'],
@@ -28,7 +34,7 @@ export const patchHandler: RouteHandlerMethod = async (req, rep) => {
       sex: body.sex,
     };
     const p = req.params as any;
-    const user = users.find((u) => { return u.id.toString() === p.userId; });
+    const user = users.find((u) => { return u.id === p.userId; });
     if (!user) throw boom.notFound();
     user.name = patch.name || user.name;
     user.address = patch.address || user.address;
