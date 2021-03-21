@@ -17,7 +17,6 @@ export const deleteHandler: RouteHandlerMethod = async (req, rep) => {
   try {
     const p = req.params as any;
     const user = users.find((u) => { return u.id === p.userId; });
-    console.log(user);
     if (!user) throw boom.notFound();
     const deleted: IServer.user[] = [];
     for (const u of users) {

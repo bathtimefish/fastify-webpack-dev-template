@@ -17,8 +17,9 @@ export const getOneHandler: RouteHandlerMethod =  async (req, rep) => {
   try {
     const p = req.params as any;
     const user = users.find((u) => { return u.id === p.userId; });
+    if (!user) throw boom.notFound();
     rep.send(user);
   } catch (e) {
-    throw boom.internal(e);
+    throw e;
   }
 };

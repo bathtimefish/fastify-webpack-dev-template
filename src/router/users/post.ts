@@ -1,5 +1,4 @@
 import { FastifySchema, RouteHandlerMethod } from 'fastify';
-import boom from '@hapi/boom';
 
 import dummyResponse from './dummyResponse';
 const users: IServer.user[] = dummyResponse as any;
@@ -31,6 +30,6 @@ export const postHandler: RouteHandlerMethod = async (req, rep) => {
     users.push(user);
     rep.send(user);
   } catch (e) {
-    throw boom.internal(e);
+    throw e;
   }
 };
