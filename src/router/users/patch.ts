@@ -42,6 +42,6 @@ export const patchHandler: RouteHandlerMethod = async (req, rep) => {
     user.sex = patch.sex || user.sex;
     rep.send(user);
   } catch (e) {
-    throw boom.internal(e);
+    throw e;
   }
 };
